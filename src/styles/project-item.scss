@@ -1,0 +1,84 @@
+.project-item {
+	position: relative;
+	padding: 15px 25px 35px;
+	border-radius: 10px;
+	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.05);
+	background: #fff;
+
+	&__body {
+		overflow: hidden;
+		text-overflow: clip;
+		word-wrap: break-word;
+	}
+	&__title {
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 26px;
+		margin-bottom: 25px;
+	}
+	&__text {
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 26px;
+	}
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+	}
+	&__chart {
+		width: 120px;
+		align-self: flex-end;
+	}
+
+	&__project {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+
+		img {
+			border-radius: 12px;
+		}
+	}
+	&__project-info {
+		font-size: 18px;
+	}
+	&__project-title {
+		font-size: 18px;
+	}
+	&__project-description {
+		color: #747474;
+	}
+
+	&__team {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 50px;
+	}
+
+	&__contact {
+		font-size: 18px;
+		align-self: center;
+		color: #d74b4b;
+	}
+}
+
+.editable {
+	.project-item__edit {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		background: transparent;
+		cursor: pointer;
+
+		svg path {
+			transition: fill 0.2s ease;
+		}
+
+		&:hover > svg > path {
+			fill: #5250d5;
+		}
+	}
+}

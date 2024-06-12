@@ -1,0 +1,199 @@
+.widget {
+	position: relative;
+	border-radius: 10px;
+	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.05);
+	background: #fff;
+	padding: 15px 25px 40px;
+
+	&.disabled {
+		background: #ffffff80;
+		color: #33333380;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		overflow: hidden;
+	}
+
+	&:has(.widget__button) {
+		padding-bottom: 0;
+	}
+
+	&__input {
+		font-size: 20px;
+		padding: 15px 0 15px 10px;
+		border: 1px solid #e1e1e1 !important;
+		border-radius: 10px;
+		margin-bottom: 20px;
+
+		&:active,
+		&:focus {
+			border: 1px solid #7658e0 !important;
+			outline: none;
+		}
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 26px;
+		margin-bottom: 25px;
+	}
+
+	&__body {
+		flex: 1 0 auto;
+		font-size: 20px;
+		line-height: 26px;
+		margin-bottom: 20px;
+
+		p {
+			overflow: hidden;
+			text-overflow: clip;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+		}
+
+		&:has(.widget__icon) {
+			display: flex;
+			justify-content: space-between;
+			gap: 10px;
+
+			input {
+				width: 100%;
+			}
+		}
+
+		.cherry {
+			background: #fff;
+			box-shadow: none;
+			font-size: 20px;
+		}
+
+		.cherry-previewer {
+			background: #fff;
+			box-shadow: none;
+			border: none;
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	&.disabled {
+		.widget__body {
+			.cherry,
+			.cherry-previewer {
+				background: none;
+				color: #33333380;
+			}
+		}
+	}
+
+	&__icon {
+		flex: 0 0 80px;
+		max-height: 80px;
+		border-radius: 10px;
+		overflow: hidden;
+		margin-left: auto;
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&.disabled {
+		.widget__icon {
+			img {
+				filter: saturate(0%);
+				opacity: 0.5;
+			}
+			svg {
+				filter: saturate(0%);
+				opacity: 0.5;
+			}
+		}
+	}
+
+	&__button {
+		height: 50px;
+		button {
+			display: block;
+			width: 100%;
+			border-top: 1px solid #e1e1e160;
+			padding: 14px 0;
+			color: #7658e0;
+			font-size: 18px;
+			cursor: pointer;
+			margin: 0 auto;
+		}
+
+		&.disabled button {
+			cursor: default;
+			color: #b6aeae;
+		}
+		&.disabled::after {
+			content: '';
+			height: 50px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: #ffffff80;
+		}
+	}
+
+	&__edit {
+		align-self: flex-start;
+		display: block;
+		background: transparent;
+		cursor: pointer;
+
+		svg path {
+			transition: fill 0.2s ease;
+		}
+
+		&:hover > svg > path {
+			fill: #412cad;
+		}
+
+		&.disabled {
+			display: none;
+			cursor: default;
+
+			svg path {
+				fill: #00000080;
+			}
+
+			&:hover > svg > path {
+				fill: #00000080;
+			}
+		}
+	}
+
+	&.isEditing {
+		.widget__edit {
+			& > svg > path {
+				fill: #412cad;
+			}
+		}
+	}
+}
+
+.hidden {
+	visibility: hidden;
+	display: none;
+	position: fixed;
+	top: -99999%;
+	height: 0;
+	width: 0;
+	z-index: -99999999;
+}
